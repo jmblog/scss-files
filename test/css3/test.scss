@@ -1,0 +1,56 @@
+$css3-ie-support: 1;
+
+@import "../../normalize";
+@import "../../css3";
+
+body {
+    padding: 10px;
+    font-family: arial;
+}
+
+body > div {
+    width: 200px;
+    height: 50px;
+    border: 1px solid #ccc;
+    background: #eee;
+    margin-bottom: 40px;
+}
+.border-radius {
+    @include border-radius(5px 10px 15px 20px);
+}
+
+.box-shadow {
+    @include box-shadow(1px 5px 5px #666);
+}
+
+.inner-box-shadow {
+    @include box-shadow(inset 1px 5px 5px #666);
+}
+
+.linear-gradient {
+    @include linear-gradient(#fff, #ddd);
+}
+
+.transition {
+    @include transition(background 0.5s linear);
+    &:hover {
+        background: #333;
+    }
+}
+
+.transform {
+    &:hover {
+        @include transform(rotate(10deg));
+    }
+}
+
+.transform-origin {
+    &:hover {
+        @include transform-origin(100% 100%);
+        @include transform(rotate(10deg));
+    }
+}
+
+.opacity {
+    @include opacity(0.5);
+}

@@ -1,0 +1,61 @@
+/* CSS3 properties
+  for IE, read http://www.smashingmagazine.com/2010/04/28/css3-solutions-for-internet-explorer/
+-------------------------------------------------------------- */
+$css3-ie-support: 0 !default;
+
+@mixin border-radius($size) {
+    -webkit-border-radius: $size;
+    -moz-border-radius: $size;
+    border-radius: $size;
+}
+
+@mixin box-shadow($shadow) {
+    -webkit-box-shadow:  $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+@mixin linear-gradient($topColor, $bottomColor) {
+    background-image: -moz-linear-gradient(top, $topColor, $bottomColor);
+    background-image: -webkit-gradient(linear, left top, left bottom, from($topColor), to($bottomColor));
+    
+    @if $css3-ie-support == 1 {
+        filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#{$topColor}', endColorstr='#{$bottomColor}'); // IE6 & IE7
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#{$topColor}', endColorstr='#{$bottomColor}')"; // IE8
+    }
+}
+
+@mixin transition($transition){
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    -webkit-transition: $transition;
+    transition: $transition; 
+}
+
+@mixin transform($transform){
+    -moz-transform: $transform;
+    -webkit-transform: $transform;
+    -o-transform: $transform;
+    -ms-transform: $transform;
+    transform: $transform;
+}
+
+@mixin transform-origin($origin) {
+    -moz-transform-origin: $origin;
+    -webkit-transform-origin: $origin;
+    -o-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    transform-origin: $origin;
+}
+
+// opacity is actually a CSS2 property ;)
+@mixin opacity($value) {
+    opacity: $value;
+    
+    @if $css3-ie-support == 1 {
+        filter: alpha(opacity=$value*100);
+        -ms-filter: "alpha(opacity=$value*100)";
+        zoom: 1;
+    }
+}
+
