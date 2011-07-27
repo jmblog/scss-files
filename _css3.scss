@@ -20,8 +20,10 @@ $css3-ie-support: 0 !default;
     background-image: -webkit-gradient(linear, left top, left bottom, from($topColor), to($bottomColor));
     
     @if $css3-ie-support == 1 {
-        filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#{$topColor}', endColorstr='#{$bottomColor}'); // IE6 & IE7
-        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#{$topColor}', endColorstr='#{$bottomColor}')"; // IE8
+        $ieTopColor: rgb(red($topColor), green($topColor), blue($topColor));
+        $ieBottomColor: rgb(red($bottomColor), green($bottomColor), blue($bottomColor));
+        filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#{$ieTopColor}', endColorstr='#{$ieBottomColor}'); // IE6 & IE7
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#{$ieTopColor}', endColorstr='#{$ieBottomColor}')"; // IE8
     }
 }
 
